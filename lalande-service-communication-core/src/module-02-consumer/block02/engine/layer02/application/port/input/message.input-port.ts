@@ -1,0 +1,8 @@
+/*message.input-port.ts*/
+
+import { MessageDto } from '../../../../../../../module-02-consumer/block02/engine/layer02/application/dto/message.dto';
+import { MessageUseCase } from '../../usecase/message.usecase';
+
+export abstract class MessageInputPort implements MessageUseCase {
+  abstract execute(dto: MessageDto): Promise<any>;
+}

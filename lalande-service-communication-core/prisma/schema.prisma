@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model tb_communication {
+  event_id String @unique
+  event_code String
+  message_type String
+  message_payload Json
+  message_status String
+  message_delivered_at DateTime?
+  message_retry_count Int @default(0)
+  message_error_flow String?
+  audit_state String
+  audit_insert_user String
+  audit_insert_date DateTime @default(now())
+}

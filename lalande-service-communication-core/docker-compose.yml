@@ -1,0 +1,14 @@
+services:
+  localstack:
+    container_name: localstack_main
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"            # Puerto para servicios de AWS
+      - "127.0.0.1:4510-4559:4510-4559"  # Puertos internos
+    environment:
+      - SERVICES=sqs                     # Solo se activa SQS
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./init-aws:/etc/localstack/init/ready.d"       
