@@ -71,7 +71,7 @@ GRANT ALL PRIVILEGES ON db_lalande_datastore_communication TO 'user_lalande_data
 
 ## 2.6. Asignar privilegios al usuario nuevo para la base de datos:
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON `db_lalande_datastore_communication_002_loc`.* TO 'user_lalande_datastore_002_loc'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON `db_lalande_datastore_communication`.* TO 'user_lalande_datastore_001_loc'@'%';
 
 ## 2.7. Autenciar con el usuario nuevo:
 
