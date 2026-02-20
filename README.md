@@ -1,4 +1,4 @@
-#### Guía de Configuración del Microservicio (Entorno Local).
+#### Guía de Configuración del Programa (Entorno Local).
 
 <p align="center">
   <a href="http://nestjs.com" target="blank"><img src="https://nestjs.com" width="120" alt="Nest Logo" /></a>
@@ -30,7 +30,15 @@ MySQL Server v8.0.44 y MySQL Workbench v8.0
 
 NestJS v11.0.16, TypeScript v5.9.3, Prisma ORM 7.4.0
 
-## 1.6. Configuración de Variables de Entorno:
+## 1.6. Modelo de buenas prácticas de programación:
+
+Clean Architecture.
+
+Hexagonal Architecture.
+
+Microservices Architecture.
+
+## 1.7. Configuración de Variables de Entorno:
 
 Crea un archivo llamado .env en la raíz del proyecto y copia el siguiente contenido (ajusta según tus credenciales):
 
