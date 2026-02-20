@@ -57,32 +57,32 @@ Password: El password es el que se registro en el momento de la instalación loc
 
 CREATE USER 'user_lalande_datastore_001_loc'@'%' IDENTIFIED BY 'Root12345';
 
-## 2.4. Crear base de datos:
+## 2.3. Crear base de datos:
 
 CREATE DATABASE IF NOT EXISTS db_lalande_datastore_communication DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
 
-## 2.7. Ubicar en la base de datos con el administrador:
+## 2.4. Ubicar en la base de datos con el administrador:
 
 USE `db_lalande_datastore_communication`;
 
-## 2.3. Asignar privilegios a usuario nuevo:
+## 2.5. Asignar privilegios a usuario nuevo:
 
 GRANT ALL PRIVILEGES ON db_lalande_datastore_communication TO 'user_lalande_datastore_001_loc'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;
 
-## 2.5. Asignar privilegios al usuario nuevo para la base de datos:
+## 2.6. Asignar privilegios al usuario nuevo para la base de datos:
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON `db_lalande_datastore_communication_002_loc`.* TO 'user_lalande_datastore_002_loc'@'%';
 
-## 2.6. Autenciar con el usuario nuevo:
+## 2.7. Autenciar con el usuario nuevo:
 
 Username: user_lalande_datastore_001_loc
 Password: Root12345
 
-## 2.7. Ubicar en la base de datos con el usuario nuevo:
+## 2.8. Ubicar en la base de datos con el usuario nuevo:
 
 USE `db_lalande_datastore_communication`;
 
-## 2.8. Mostrar todas las tablas:
+## 2.9. Mostrar todas las tablas:
 
 SHOW TABLES;
 
