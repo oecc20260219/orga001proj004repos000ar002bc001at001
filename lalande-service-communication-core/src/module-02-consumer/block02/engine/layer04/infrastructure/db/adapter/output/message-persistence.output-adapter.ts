@@ -1,9 +1,10 @@
 /* message-persistence.output-adapter.ts */
 
 import { Injectable } from '@nestjs/common';
-import { MessagePersistenceOutputPort } from '../../../../../layer02/application/port/output/message-persistence.output-port';
-import { Message } from '../../../../../layer01/enterprise/domain/message';
+import { MessagePersistenceOutputPort } from 'src/module-02-consumer/block02/engine/layer02/application/port/output/message-persistence.output-port';
+import { Message } from 'src/module-02-consumer/block02/engine/layer01/enterprise/domain/message';
 import { PrismaService } from 'prisma/prisma.service';
+import { Prisma } from '@prisma/client';
 
 type PrismaJson = { [key: string]: any };
 
@@ -30,6 +31,15 @@ export class MessagePersistenceOutputAdapter extends MessagePersistenceOutputPor
       });
       return message;
     } catch (error: unknown) {
+      // Verificamos si es un error conocido de Prisma
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2002') {
+          console.warn(
+            `[IDEMPOTENCIA] El mensaje ${message.event_id} ya existe en DB. Entonces no se insertará porque ya existe el event_id.`,
+          );
+          return message;
+        }
+      }
       console.error('Error al persistir en DB:', error);
       throw new Error('No se pudo guardar el mensaje en la base de datos');
     }

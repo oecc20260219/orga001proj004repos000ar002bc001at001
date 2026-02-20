@@ -2,15 +2,15 @@
 
 import { Injectable, Logger } from '@nestjs/common';
 import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
-import { MessageQueueOutputPort } from 'src/module-01-producer/block02/engine/layer02/application/port/output/message-queue.output-port';
-import { Message } from 'src/module-01-producer/block02/engine/layer01/enterprise/domain/message';
+import { MessageQueueOutputPort } from 'src/module-02-consumer/block02/engine/layer02/application/port/output/message-queue.output-port';
+import { Message } from 'src/module-02-consumer/block02/engine/layer01/enterprise/domain/message';
 
 @Injectable()
 export class MessageQueueOutputAdapter extends MessageQueueOutputPort {
   private readonly sqsClient: SQSClient;
   private readonly logger = new Logger(MessageQueueOutputAdapter.name);
   private readonly queueUrl =
-    'http://localhost:4566/000000000000/queue-lalande-communication-pending';
+    'http://localhost:4566/000000000000/queue-lalande-communication-delivered';
 
   constructor() {
     super();
@@ -33,15 +33,16 @@ export class MessageQueueOutputAdapter extends MessageQueueOutputPort {
           event_code: message.event_code,
           message_type: message.message_type,
           message_payload: message.message_payload,
-          message_status: 'PENDING',
+          message_status: 'DELIVERED',
           audit_insert_user: message.audit_insert_user,
           audit_insert_date: message.audit_insert_date,
         }),
+        DelaySeconds: 15,
       };
 
       const command = new SendMessageCommand(input);
       await this.sqsClient.send(command);
-      this.logger.log(`Mensaje encolado con PENDING: ${message.event_code}`);
+      this.logger.log(`Mensaje encolado con DELIVERED: ${message.event_code}`);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : String(error);

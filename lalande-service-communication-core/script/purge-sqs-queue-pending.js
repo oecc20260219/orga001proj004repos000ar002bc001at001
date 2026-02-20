@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { SQSClient, PurgeQueueCommand } = require("@aws-sdk/client-sqs");
 
 const client = new SQSClient({
@@ -12,9 +13,9 @@ const client = new SQSClient({
 const purge = async () => {
   try {
     await client.send(new PurgeQueueCommand({
-      QueueUrl: "http://localhost:4566/000000000000/queue-lalande-communication"
+      QueueUrl: "http://localhost:4566/000000000000/queue-lalande-communication-pending"
     }));
-    console.log("Cola limpiada con éxito");
+    console.log("Cola PENDING limpiada con éxito");
   } catch (err) {
     console.error("Error:", err.message);
   }

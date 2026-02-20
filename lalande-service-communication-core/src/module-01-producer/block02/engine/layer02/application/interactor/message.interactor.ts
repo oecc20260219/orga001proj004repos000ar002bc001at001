@@ -1,10 +1,10 @@
 /*message.interactor.ts*/
 
 import { Injectable } from '@nestjs/common';
-import { MessageInputPort } from '../../../../../../module-01-producer/block02/engine/layer02/application/port/input/message.input-port';
-import { MessageQueueOutputPort } from '../../../../../../module-01-producer/block02/engine/layer02/application/port/output/message-queue.output-port';
-import { MessageDto } from '../../../../../../module-01-producer/block02/engine/layer02/application/dto/message.dto';
-import { Message } from '../../../../../../module-01-producer/block02/engine/layer01/enterprise/domain/message';
+import { MessageInputPort } from 'src/module-01-producer/block02/engine/layer02/application/port/input/message.input-port';
+import { MessageQueueOutputPort } from 'src/module-01-producer/block02/engine/layer02/application/port/output/message-queue.output-port';
+import { MessageDto } from 'src/module-01-producer/block02/engine/layer02/application/dto/message.dto';
+import { Message } from 'src/module-01-producer/block02/engine/layer01/enterprise/domain/message';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()

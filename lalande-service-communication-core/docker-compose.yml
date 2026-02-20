@@ -1,6 +1,6 @@
 services:
   localstack:
-    container_name: localstack_main
+    container_name: localstack_lalande_aws_sqs
     image: localstack/localstack
     ports:
       - "127.0.0.1:4566:4566"            # Puerto para servicios de AWS

@@ -1,10 +1,10 @@
 /*http-message.controller.ts*/
 
 import { Controller, Post, Body } from '@nestjs/common';
-import { MessageDto } from '../../../layer02/application/dto/message.dto';
-import { MessageInputAdapter } from '../input/message.input-adapter';
-import { HttpRequest } from '../http/http-request';
-import { HttpResponse } from '../http/http-response';
+import { MessageDto } from 'src/module-01-producer/block02/engine/layer02/application/dto/message.dto';
+import { MessageInputAdapter } from 'src/module-01-producer/block02/engine/layer03/adapter/input/message.input-adapter';
+import { HttpRequest } from 'src/module-01-producer/block02/engine/layer03/adapter/http/http-request';
+import { HttpResponse } from 'src/module-01-producer/block02/engine/layer03/adapter/http/http-response';
 
 @Controller('send-message')
 export class HttpMessageController {

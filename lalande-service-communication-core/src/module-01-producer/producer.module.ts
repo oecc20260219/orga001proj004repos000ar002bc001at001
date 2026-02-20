@@ -1,12 +1,12 @@
 /* producer.module.ts */
 
 import { Module } from '@nestjs/common';
-import { HttpMessageController } from './block02/engine/layer03/adapter/controller/message.controller';
-import { MessageInputAdapter } from './block02/engine/layer03/adapter/input/message.input-adapter';
-import { MessageInputPort } from './block02/engine/layer02/application/port/input/message.input-port';
-import { MessageInteractor } from './block02/engine/layer02/application/interactor/message.interactor';
-import { MessageQueueOutputPort } from './block02/engine/layer02/application/port/output/message-queue.output-port';
-import { MessageQueueOutputAdapter } from './block02/engine/layer04/infrastructure/db/adapter/output/message-queue.output-adapter';
+import { HttpMessageController } from 'src/module-01-producer//block02/engine/layer03/adapter/controller/message.controller';
+import { MessageInputAdapter } from 'src/module-01-producer//block02/engine/layer03/adapter/input/message.input-adapter';
+import { MessageInputPort } from 'src/module-01-producer//block02/engine/layer02/application/port/input/message.input-port';
+import { MessageInteractor } from 'src/module-01-producer//block02/engine/layer02/application/interactor/message.interactor';
+import { MessageQueueOutputPort } from 'src/module-01-producer//block02/engine/layer02/application/port/output/message-queue.output-port';
+import { MessageQueueOutputAdapter } from 'src/module-01-producer//block02/engine/layer04/infrastructure/db/adapter/output/message-queue.output-adapter';
 
 @Module({
   controllers: [HttpMessageController],

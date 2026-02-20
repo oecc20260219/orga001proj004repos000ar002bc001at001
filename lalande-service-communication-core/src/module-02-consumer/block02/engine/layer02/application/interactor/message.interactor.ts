@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '../../../../../../module-02-consumer/block02/engine/layer01/enterprise/domain/message';
-import { MessagePersistenceOutputPort } from '../port/output/message-persistence.output-port';
-import { MessageInputPort } from '../port/input/message.input-port';
-import { MessageDto } from '../dto/message.dto';
+import { Message } from 'src/module-02-consumer/block02/engine/layer01/enterprise/domain/message';
+import { MessagePersistenceOutputPort } from 'src/module-02-consumer/block02/engine/layer02/application/port/output/message-persistence.output-port';
+import { MessageQueueOutputPort } from 'src/module-02-consumer/block02/engine/layer02/application/port/output/message-queue.output-port';
+import { MessageInputPort } from 'src/module-02-consumer/block02/engine/layer02/application/port/input/message.input-port';
+import { MessageDto } from 'src/module-02-consumer/block02/engine/layer02/application/dto/message.dto';
 
 @Injectable()
 export class MessageInteractor implements MessageInputPort {
-  constructor(private readonly messagePersistenceOutputPort: MessagePersistenceOutputPort) {}
+  constructor(
+    private readonly messagePersistenceOutputPort: MessagePersistenceOutputPort,
+    private readonly messageQueueOutputPort: MessageQueueOutputPort,
+  ) {}
 
   async execute(dto: MessageDto): Promise<void> {
     console.log('--- CONSUMER: INICIADO DESDE SQS ---', dto);
@@ -32,5 +36,6 @@ export class MessageInteractor implements MessageInputPort {
 
     await this.messagePersistenceOutputPort.persist(message);
 
+    await this.messageQueueOutputPort.enqueue(message);
   }
 }
