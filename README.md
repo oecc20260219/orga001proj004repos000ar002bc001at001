@@ -48,7 +48,7 @@ SQS_QUEUE_DELIVERED=http://localhost:4566/000000000000/queue-lalande-communicati
 
 Ejecuta las sentencias siguientes en MySQL Workbench:
 
-## 2.1. Autenciar con el administrador:
+## 2.1. Autenticar con el administrador:
 
 Username: root
 Password: El password es el que se registro en el momento de la instalación local del MySQL Server.
@@ -73,7 +73,7 @@ GRANT ALL PRIVILEGES ON db_lalande_datastore_communication TO 'user_lalande_data
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON `db_lalande_datastore_communication`.* TO 'user_lalande_datastore_001_loc'@'%';
 
-## 2.7. Autenciar con el usuario nuevo:
+## 2.7. Autenticar con el usuario nuevo:
 
 Username: user_lalande_datastore_001_loc
 Password: Root12345
